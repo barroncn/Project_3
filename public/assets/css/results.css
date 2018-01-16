@@ -1,0 +1,18 @@
+.column{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.columns{
+    margin-top: 10px;
+}
+
+.card:hover{
+    box-shadow: -7px 11px 25px -9px rgba(0, 0, 0, 1);
+}
+
+.button{
+    vertical-align: middle;
+    margin: 18px;
+    margin-left: 5px;
+}

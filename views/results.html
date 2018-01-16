@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta lang="en-us" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Meal Crave</title>
+	
+	<!--Bulma CSS Framework-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css" type="text/css" />
+	<!--Font-Awesome CDN-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+	<!--Custom Stylesheet, path populated via handlebars-->
+	<link rel="stylesheet" href="results.css" type="text/css" />
+	<!--Jquery-->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <section class="hero is-dark has-text-centered">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title"> <span><form><input class="column is-pulled-left input is-6 is-offset-3 is-medium" type="text" id="searchCity" placeholder="Enter a City here..."></form></span><span><input class="button is-pulled-left" id="searchSubmit" type="submit" value="Search"></span>
+          </h1>
+        </div>
+      <!--<div class="dropdown">-->
+      <!--    <div class="dropdown-trigger">-->
+      <!--      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">-->
+      <!--        <span>Click me</span>-->
+      <!--        <span class="icon is-small">-->
+      <!--          <i class="fas fa-angle-down" aria-hidden="true"></i>-->
+      <!--        </span>-->
+      <!--      </button>-->
+      <!--    </div>-->
+      <!--    <div class="dropdown-menu .is-hoverable" id="filterMenu" role="menu">-->
+      <!--      <div class="dropdown-content">-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Overview-->
+      <!--        </a>-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Modifiers-->
+      <!--        </a>-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Grid-->
+      <!--        </a>-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Form-->
+      <!--        </a>-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Elements-->
+      <!--        </a>-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Components-->
+      <!--        </a>-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          Layout-->
+      <!--        </a>-->
+      <!--        <hr class="dropdown-divider">-->
+      <!--        <a href="#" class="dropdown-item">-->
+      <!--          More-->
+      <!--        </a>-->
+      <!--      </div>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      </div>
+    </section>
+    <div class="columns is-multiline" id="searchRes">
+        
+    </div>
+   
+    
+    <script>
+    // Sets up Google Places autocomplete API
+    function placesSearch() {
+      var searchCityAutocomplete = new google.maps.places.Autocomplete(document.getElementById('searchCity'));
+    }
+    
+    // $("#filterMenu").on("click", function(){
+    //   event.preventDefault();
+    //     var target = $el.getAttribute('href');
+    //     var $target = document.getElementById(target.substring(1));
+    //     $target.scrollIntoView(true);
+    //     // window.history.replaceState(null, document.title, `${window.location.origin}${window.location.pathname}${target}`);
+    //     return false;
+    // });
+    
+    
+    $("#searchSubmit").on("click", function() {
+        $("#searchRes").empty();
+        // $.ajax({
+        //     url: "/search",
+        //     method: "GET",
+        //     data: {
+        //         city: $("#searchCity").value().trim()
+        //     }
+        // }).done(function (results){
+        var results = [{
+                            name: "Latta Park Plantation",
+                            summary: "Miles of trails, canoe rentals, and a historic plantation for touring.",
+                            url: "https://www.github.com"
+                        },
+                        {
+                            name: "Another Latta Park Plantation",
+                            summary: "Miles of trails, canoe rentals, and a historic plantation for touring.",
+                            url: "https://www.stackoverflow.com"
+                        },
+                        {
+                            name: "Third Latta Park Plantation",
+                            summary: "Miles of trails, canoe rentals, and a historic plantation for touring.",
+                            url: "https://www.uncc.edu"
+                        }];
+                        
+            results.forEach(res => {
+                $("#searchRes").append("<div class='card column is-8 is-offset-2'>" +
+                                              "<div class='card-content'>" +
+                                                "<p class='title'>" +
+                                                    res.name +
+                                                "</p>" +
+                                                "<p class='subtitle'>" +
+                                                  res.summary +
+                                                "</p>" +
+                                              "</div>" +
+                                              "<footer class='card-footer'>" +
+                                                "<p class='card-footer-item'>" +
+                                                  "<span>" +
+                                                    "<a href='" + res.url + "' target='_blank'>Visit the Website</a>" +
+                                                  "</span>" +
+                                                "</p>" + 
+                                              "</footer>" +
+                                            "</div>"
+                    );
+            
+            //     });
+            });      
+        });
+    </script>
+
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMRNMvB_hrPmwoHo_pkOvAfIOI5IMuMsA&libraries=places&callback=placesSearch"></script>
+
+</body>
+
+</html>
